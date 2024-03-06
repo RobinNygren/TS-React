@@ -4,7 +4,11 @@ import ChangeText from "./ChangeText";
 import ColorBox from "./ColorBox";
 import Counter from "./Counter";
 import Header from "./Header";
+import List from "./List";
+import PrettyText from "./PrettyText";
+import QuestList from "./QuestList";
 import TextToAlert from "./TextToAlert";
+import VehiclesList from "./VehiclesList";
 
 function App() {
   return (
@@ -17,6 +21,10 @@ function App() {
       <ChangeText />
       <Addition />
       <ColorBox />
+      <QuestList />
+      <VehiclesList />
+      <PrettyText />
+      <List />
     </>
   );
 }

@@ -8,24 +8,24 @@ import React from "react";
 import { useState } from "react";
 
 const Addition = () => {
-  const [firstNumber, setFirstNumber] = useState(0);
-  const [secondNumber, setSecondNumber] = useState(0);
-  const [sum, setSum] = useState(0);
+  const [firstNumber, setFirstNumber] = useState(0 || "");
+  const [secondNumber, setSecondNumber] = useState(0 || "");
+  const [sum, setSum] = useState(0 || "");
 
   const handleAddition = () => {
-    setSum(Number(firstNumber) + Number(secondNumber));
+    setSum(String(firstNumber) + String(secondNumber));
   };
   return (
     <div>
       <input
-        type="number"
+        type="text"
         value={firstNumber}
-        onChange={(e) => setFirstNumber(Number(e.target.value))}
+        onChange={(e) => setFirstNumber(String(e.target.value))}
       />
       <input
-        type="number"
+        type="text"
         value={secondNumber}
-        onChange={(e) => setSecondNumber(Number(e.target.value))}
+        onChange={(e) => setSecondNumber(String(e.target.value))}
       />
       <button onClick={handleAddition}>Add</button>
       <p>{sum}</p>
