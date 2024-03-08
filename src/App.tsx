@@ -5,8 +5,10 @@ import ColorBox from "./ColorBox";
 import Counter from "./Counter";
 import Header from "./Header";
 import List from "./List";
+import NewCounter from "./NewCounter";
 import PrettyText from "./PrettyText";
 import QuestList from "./QuestList";
+import Stringer from "./Stringer";
 import TextToAlert from "./TextToAlert";
 import VehiclesList from "./VehiclesList";
 
@@ -25,6 +27,8 @@ function App() {
       <VehiclesList />
       <PrettyText />
       <List />
+      <NewCounter />
+      <Stringer />
     </>
   );
 }

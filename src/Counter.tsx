@@ -1,26 +1,40 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
+
+const ACTION = {
+  ADD: "add",
+  REMOVE: "remove",
+};
+
+const reducer = (state: any, action: any) => {
+  switch (action.type) {
+    case ACTION.ADD:
+      return { count: state.count + 1 };
+    case ACTION.REMOVE:
+      return { count: state.count - 1 };
+  }
+};
 
 function Counter() {
   // const x = 12; ingen type declaration, utan infered type
   // const x: number = 12; med type declaration
-  const [newCount, setNewCount] = useState(0);
-  const [count, setCount] = useState(0);
+  //const [newCount, setNewCount] = useState(0);
+  //const [count, setCount] = useState(0);
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
 
-  const handleAddClick = () => setCount(count + 1);
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setNewCount(Number(e.target.value));
+  /* const handleAddClick = () => dispatch(); */
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    //setNewCount(Number(e.target.value));
   };
-  const handleClickChange = () => {
+  /* const handleClickChange = () => {
     setCount(newCount);
-  };
+  }; */
 
   return (
     <div>
-      <input type="text" value={newCount} onChange={handleChange} />
-      <button onClick={handleClickChange}>Change</button>
-      <p>{count}</p>
-      <button onClick={handleAddClick}>Add</button>
-      <button onClick={() => setCount(count - 1)}>Remove</button>
+      <input type="text" value={state.count} onChange={handleChange} />
+      <button onClick={() => dispatch({ type: ACTION.ADD })}>Add</button>
+      <button onClick={() => dispatch({ type: ACTION.REMOVE })}>Remove</button>
     </div>
   );
 }
