@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Header>
-        RUBRIK och <span>ngt mer?</span>
+        TS-React övningar <span>ngt mer?</span>
       </Header>
       <Counter />
       <TextToAlert />

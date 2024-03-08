@@ -5,27 +5,36 @@
 // Se till att taborder är korrekt.
 
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const Addition = () => {
-  const [firstNumber, setFirstNumber] = useState(0 || "");
-  const [secondNumber, setSecondNumber] = useState(0 || "");
-  const [sum, setSum] = useState(0 || "");
+  const [firstNumber, setFirstNumber] = useState("");
+  const [secondNumber, setSecondNumber] = useState("");
+  const [sum, setSum] = useState(0);
+
+  const firstInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleAddition = () => {
-    setSum(String(firstNumber) + String(secondNumber));
+    setSum(Number(firstNumber) + Number(secondNumber));
+    setFirstNumber("");
+    setSecondNumber("");
+    if (firstInputRef.current) {
+      firstInputRef.current.focus();
+    }
   };
+
   return (
     <div>
       <input
-        type="text"
+        type="number"
         value={firstNumber}
-        onChange={(e) => setFirstNumber(String(e.target.value))}
+        onChange={(e) => setFirstNumber(e.target.value)}
+        ref={firstInputRef}
       />
       <input
-        type="text"
+        type="number"
         value={secondNumber}
-        onChange={(e) => setSecondNumber(String(e.target.value))}
+        onChange={(e) => setSecondNumber(e.target.value)}
       />
       <button onClick={handleAddition}>Add</button>
       <p>{sum}</p>
